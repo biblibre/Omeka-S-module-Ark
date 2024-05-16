@@ -40,7 +40,7 @@ class MvcListeners extends AbstractListenerAggregate
         }
 
         $uri = $_SERVER['REQUEST_URI'] ?? null;
-        if (isset($uri) && 0 == substr_compare($uri, '?', -1)) {
+        if (isset($uri) && 0 == substr_compare($uri, '??', -2)) {
             return;
         }
 

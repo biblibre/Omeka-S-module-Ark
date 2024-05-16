@@ -35,15 +35,12 @@ class ArkController extends AbstractActionController
 
         // Manage special uris.
         $uri = $_SERVER['REQUEST_URI'] ?? null;
-        if (isset($uri) && substr_compare($uri, '?', -1) == 0) {
+        if (isset($uri) && substr_compare($uri, '??', -2) == 0) {
             $this->setPlainTextContentType();
             $view = new ViewModel(['resource' => $resource]);
             $view->setTemplate('ark/index/metadata');
             $view->setTerminal(true);
-
-            if (substr_compare($uri, '??', -2) == 0) {
-                $view->setVariable('policy', true);
-            }
+            $view->setVariable('policy', true);
 
             return $view;
         }
